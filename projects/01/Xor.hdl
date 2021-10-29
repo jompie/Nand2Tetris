@@ -13,10 +13,8 @@ CHIP Xor {
     OUT out;
 
     PARTS:
-    // from demo folder
-    Not (in=a, out=notA);
-    Not (in=b, out=notB);
-    And (a=a, b=notB, out=aAndNotB);
-    And (a=notA, b=b, out=bAndNotA);
-    Or (a=aAndNotB, b=bAndNotA, out=out);
+    // (a or b) and not(a and b)
+    Or(a=a, b=b, out=aOrB);
+    Nand(a=a, b=b, out=aNandB);
+    And(a=aOrB, b=aNandB, out=out);
 }
